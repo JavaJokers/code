@@ -32,6 +32,7 @@ package org.firstinspires.ftc.teamcode;
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.robot.Robot;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
@@ -65,6 +66,8 @@ public class MecanumFieldOriented extends LinearOpMode {
     DcMotor rB = hardwareMap.dcMotor.get("back_right");
     DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
     CRServo duckies = hardwareMap.crservo.get("duckies");
+    Servo wrist1 = hardwareMap.servo.get("wrist");
+    Servo grabber = hardwareMap.servo.get("grabber");
     BNO055IMU imu; // = hardwareMap.get(BNO055IMU.class, "imu");
 
     public void initIMU(HardwareMap hwm){

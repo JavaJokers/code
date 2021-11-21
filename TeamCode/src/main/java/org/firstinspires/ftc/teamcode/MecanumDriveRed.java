@@ -18,7 +18,7 @@ public class MecanumDriveRed extends LinearOpMode {
 	  DcMotor rF = hardwareMap.dcMotor.get("front_right");
 	  DcMotor rb = hardwareMap.dcMotor.get("back_right");
 	  DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
-	  DcMotor carasel = hardwareMap.dcMotor.get("duckies");
+	  DcMotor duckies = hardwareMap.dcMotor.get("duckies");
 	  Servo wrist1 = hardwareMap.servo.get("wrist");
 	  Servo grabber = hardwareMap.servo.get("grabber");
 	  
@@ -135,9 +135,9 @@ public class MecanumDriveRed extends LinearOpMode {
 		
 		
 		if(gamepad1.x || gamepad2.x){
-			carasel.setPower(-0.5);
+			duckies.setPower(-0.5);
 		}else{
-			carasel.setPower(0);
+			duckies.setPower(0);
 		}
 	  }
    }
