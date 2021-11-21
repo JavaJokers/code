@@ -52,7 +52,7 @@ import java.util.List;
  * is explained below.
  */
 @TeleOp(name = "Concept: TensorFlow Object Detection Webcam", group = "Concept")
-@Disabled
+//@Disabled
 public class AutonomousTensorFlow extends LinearOpMode {
   /* Note: This sample uses the all-objects Tensor Flow model (FreightFrenzy_BCDM.tflite), which contains
    * the following 4 detectable objects
@@ -86,7 +86,7 @@ public class AutonomousTensorFlow extends LinearOpMode {
      * and paste it in to your code on the next line, between the double quotes.
      */
     private static final String VUFORIA_KEY =
-            " -- YOUR NEW VUFORIA KEY GOES HERE  --- ";
+            "AeGHwfD/////AAABmQgokU85G0BBgWvLgkyTUVdAq1j9kOJbpP+4nxZlJu6/tXcMX+bdLASkdj999Hz8jjbyRcBlCyDDCnUoAB8RGBmdt8yW3Qj0zQCtkKejGEN6BVN8WSjWSAlT7VIgKTnScli3lpSTDhQeetONioHzBv6b2tp6HCsqHXJTv4Qab8nDbspYdnvc2BYQbtRvx9YFp+9Rl5KHVaKUcmmkRLzw+9k26r6qDAtjNdfy+W2qRjmdJP22dJOhlZVj05EPfSYDF+oLlkWvCN8TUFeQhoPaMBwWD7l4R92A7awK0jdhZlsnsDH4+y8xhpdIIl/H9u0dsRSoaJwDwL752j86m7OfWOdhO1OyBs1QAFfJ2wvgavH6";
 
     /**
      * {@link #vuforia} is the variable we will use to store our instance of the Vuforia
