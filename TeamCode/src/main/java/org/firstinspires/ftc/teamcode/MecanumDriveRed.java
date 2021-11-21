@@ -116,19 +116,10 @@ public class MecanumDriveRed extends LinearOpMode {
 		
 		wrist1.setPosition(gamepad2.right_trigger);
 		  //TODO
-		if(gamepad2.dpad_up){
-			arm1.setPower(1);
-			arm1.setTargetPosition(-600);
-			arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-		} else if(gamepad2.dpad_right){
-			
-		} else if(gamepad2.dpad_down){
-			
-		} else if(gamepad2.dpad_left){
-			
-		} else{
-			
-		}
+		int ticks = 0 + (int)gamepad2.left_stick_y;
+		arm1.setPower(1);
+		arm1.setTargetPosition(ticks);
+		arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 		
 		
 		
