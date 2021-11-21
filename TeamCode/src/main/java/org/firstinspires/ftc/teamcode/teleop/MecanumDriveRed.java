@@ -10,7 +10,7 @@ import com.qualcomm.robotcore.hardware.DcMotorSimple;
 @TeleOp(name="Mecanum Drive Red", group="TeleOpMecanum")
 public class MecanumDriveRed extends LinearOpMode {
    @Override
-   public void runOpMode() throws InterruptedException {
+   public void runOpMode()  {
 	  // Declare our motors
 	  // Make sure your ID's match your configuration
 	  DcMotor lF = hardwareMap.dcMotor.get("front_left");
