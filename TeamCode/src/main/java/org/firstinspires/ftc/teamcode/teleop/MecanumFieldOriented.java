@@ -31,12 +31,10 @@ package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.hardware.bosch.JustLoggingAccelerationIntegrator;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.robot.Robot;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.HardwareDevice;
-import com.qualcomm.robotcore.hardware.CRServo;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
@@ -65,7 +63,7 @@ public class MecanumFieldOriented extends LinearOpMode {
     DcMotor rF = hardwareMap.dcMotor.get("front_right");
     DcMotor rB = hardwareMap.dcMotor.get("back_right");
     DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
-    CRServo duckies = hardwareMap.crservo.get("duckies");
+    DcMotor duckies = hardwareMap.dcMotor.get("duckies");
     Servo wrist1 = hardwareMap.servo.get("wrist");
     Servo grabber = hardwareMap.servo.get("grabber");
     BNO055IMU imu; // = hardwareMap.get(BNO055IMU.class, "imu");
@@ -206,7 +204,12 @@ public class MecanumFieldOriented extends LinearOpMode {
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
-
+            //control carousel wheel
+            if(gamepad1.x || gamepad2.x){
+                duckies.setPower(-0.5);
+            }else{
+                duckies.setPower(0);
+            }
 
             // Show the wheel power.
             telemetry.addData("Motors", "carousel (%.2f)", duckiesPower);
