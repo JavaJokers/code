@@ -110,11 +110,23 @@ public class MecanumDriveRed extends LinearOpMode {
 			telemetry.update();
 		}
 		
-		//set wrist position to wrist position plus gamepad2.right_joystick_y
-	//	wrist1.setPosition(1);
-		
-		
+		//set wrist position
 		wrist1.setPosition(gamepad2.right_trigger);
+
+		//TODO
+		  //set wrist position option 2
+            /*
+            if(gamepad2.dpad_up){
+                wrist1.setPosition(1);
+            } else if(gamepad2.dpad_right){
+                wrist1.setPosition(0.7);
+            } else if(gamepad2.dpad_down){
+                wrist1.setPosition(0.5);
+            } else if(gamepad2.dpad_left){
+                wrist1.setPosition(0.3);
+            }
+            */
+
 		//TODO
 
 		  int ticks;
