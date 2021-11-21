@@ -165,7 +165,44 @@ public class MecanumFieldOriented extends LinearOpMode {
                 rB.setPower(backRightPower);
                 duckies.setPower(duckiesPower);
             }
-            // Show the elapsed game time and wheel power.
+
+            //set grabber positions
+            if(gamepad2.a){
+                grabber.setPosition(0.7);
+                telemetry.addLine("position 20");
+                telemetry.update();
+            } else if(gamepad2.b){
+                grabber.setPosition(0.45);
+                telemetry.addLine("position 30");
+                telemetry.update();
+            } else if(gamepad2.y){
+                grabber.setPosition(0.1);
+                telemetry.addLine("position 50");
+                telemetry.update();
+            }
+
+            //set wrist position
+            wrist1.setPosition(gamepad2.right_trigger);
+
+
+            //TODO
+            //set arm positions
+            if(gamepad2.dpad_up){
+                arm1.setPower(1);
+                arm1.setTargetPosition(-600);
+                arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            } else if(gamepad2.dpad_right){
+
+            } else if(gamepad2.dpad_down){
+
+            } else if(gamepad2.dpad_left){
+
+            } else{
+
+            }
+
+
+            // Show the wheel power.
             telemetry.addData("Motors", "carousel (%.2f)", duckiesPower);
             telemetry.update();
         }
