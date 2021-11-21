@@ -32,6 +32,9 @@ package org.firstinspires.ftc.teamcode.autonomous.red1;
 import com.qualcomm.robotcore.eventloop.opmode.Disabled;
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
+import com.qualcomm.robotcore.hardware.CRServo;
+import com.qualcomm.robotcore.hardware.DcMotor;
+import com.qualcomm.robotcore.hardware.Servo;
 
 import org.firstinspires.ftc.robotcore.external.ClassFactory;
 import org.firstinspires.ftc.robotcore.external.hardware.camera.WebcamName;
@@ -65,6 +68,19 @@ public class AutonomousTensorFlow extends LinearOpMode {
    *  FreightFrenzy_BC.tflite  0: Ball,  1: Cube
    *  FreightFrenzy_DM.tflite  0: Duck,  1: Marker
    */
+
+
+    //initialize motors
+    DcMotor lF = hardwareMap.dcMotor.get("front_left");
+    DcMotor lB = hardwareMap.dcMotor.get("back_left");
+    DcMotor rF = hardwareMap.dcMotor.get("front_right");
+    DcMotor rB = hardwareMap.dcMotor.get("back_right");
+    DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
+    CRServo duckies = hardwareMap.crservo.get("duckies");
+    Servo wrist1 = hardwareMap.servo.get("wrist");
+    Servo grabber = hardwareMap.servo.get("grabber");
+
+
     private static final String TFOD_MODEL_ASSET = "FreightFrenzy_BCDM.tflite";
     private static final String[] LABELS = {
       "Ball",
@@ -73,18 +89,7 @@ public class AutonomousTensorFlow extends LinearOpMode {
       "Marker"
     };
 
-    /*
-     * IMPORTANT: You need to obtain your own license key to use Vuforia. The string below with which
-     * 'parameters.vuforiaLicenseKey' is initialized is for illustration only, and will not function.
-     * A Vuforia 'Development' license key, can be obtained free of charge from the Vuforia developer
-     * web site at https://developer.vuforia.com/license-manager.
-     *
-     * Vuforia license keys are always 380 characters long, and look as if they contain mostly
-     * random data. As an example, here is a example of a fragment of a valid key:
-     *      ... yIgIzTqZ4mWjk9wd3cZO9T1axEqzuhxoGlfOOI2dRzKS4T0hQ8kT ...
-     * Once you've obtained a license key, copy the string from the Vuforia web site
-     * and paste it in to your code on the next line, between the double quotes.
-     */
+
     private static final String VUFORIA_KEY =
             "AeGHwfD/////AAABmQgokU85G0BBgWvLgkyTUVdAq1j9kOJbpP+4nxZlJu6/tXcMX+bdLASkdj999Hz8jjbyRcBlCyDDCnUoAB8RGBmdt8yW3Qj0zQCtkKejGEN6BVN8WSjWSAlT7VIgKTnScli3lpSTDhQeetONioHzBv6b2tp6HCsqHXJTv4Qab8nDbspYdnvc2BYQbtRvx9YFp+9Rl5KHVaKUcmmkRLzw+9k26r6qDAtjNdfy+W2qRjmdJP22dJOhlZVj05EPfSYDF+oLlkWvCN8TUFeQhoPaMBwWD7l4R92A7awK0jdhZlsnsDH4+y8xhpdIIl/H9u0dsRSoaJwDwL752j86m7OfWOdhO1OyBs1QAFfJ2wvgavH6";
 
@@ -107,10 +112,10 @@ public class AutonomousTensorFlow extends LinearOpMode {
         initVuforia();
         initTfod();
 
-        /**
-         * Activate TensorFlow Object Detection before we wait for the start command.
-         * Do it here so that the Camera Stream window will have the TensorFlow annotations visible.
-         **/
+        /*
+          Activate TensorFlow Object Detection before we wait for the start command.
+          Do it here so that the Camera Stream window will have the TensorFlow annotations visible.
+         */
         if (tfod != null) {
             tfod.activate();
 
@@ -123,7 +128,7 @@ public class AutonomousTensorFlow extends LinearOpMode {
             tfod.setZoom(2.5, 16.0/9.0);
         }
 
-        /** Wait for the game to begin */
+        /* Wait for the game to begin */
         telemetry.addData(">", "Press Play to start op mode");
         telemetry.update();
         waitForStart();
