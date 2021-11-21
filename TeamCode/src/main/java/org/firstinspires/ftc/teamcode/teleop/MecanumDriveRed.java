@@ -118,7 +118,7 @@ public class MecanumDriveRed extends LinearOpMode {
 		//TODO
 
 		  int ticks;
-		  ticks = + (int)gamepad2.left_stick_y;
+		  ticks = + (int)gamepad2.left_stick_y * 2;
 		  arm1.setPower(1);
 		arm1.setTargetPosition(ticks);
 		arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
