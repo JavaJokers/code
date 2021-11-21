@@ -47,9 +47,9 @@ public class MecanumDriveRed extends LinearOpMode {
 		 double rx = -gamepad1.right_stick_x; // Remember, this is reversed!
 		 double x = -gamepad1.left_stick_x * 1.1; // Counteract imperfect strafing
 		 double y = gamepad1.left_stick_y;
-		 
 
-		 double frontLeftPower = y + x + rx;
+
+		  double frontLeftPower = y + x + rx;
 		 double backLeftPower = y - x + rx;
 		 double frontRightPower = y - x - rx;
 		 double backRightPower = y + x - rx;
@@ -115,9 +115,11 @@ public class MecanumDriveRed extends LinearOpMode {
 		
 		
 		wrist1.setPosition(gamepad2.right_trigger);
-		  //TODO
-		int ticks = 0 + (int)gamepad2.left_stick_y;
-		arm1.setPower(1);
+		//TODO
+
+		  int ticks;
+		  ticks = + (int)gamepad2.left_stick_y;
+		  arm1.setPower(1);
 		arm1.setTargetPosition(ticks);
 		arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 		
