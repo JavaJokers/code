@@ -16,7 +16,7 @@ public class MecanumDriveRed extends LinearOpMode {
 	  DcMotor lF = hardwareMap.dcMotor.get("front_left");
 	  DcMotor lB = hardwareMap.dcMotor.get("back_left");
 	  DcMotor rF = hardwareMap.dcMotor.get("front_right");
-	  DcMotor rb = hardwareMap.dcMotor.get("back_right");
+	  DcMotor rB = hardwareMap.dcMotor.get("back_right");
 	  DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
 	  DcMotor duckies = hardwareMap.dcMotor.get("duckies");
 	  Servo wrist1 = hardwareMap.servo.get("wrist");
@@ -27,13 +27,13 @@ public class MecanumDriveRed extends LinearOpMode {
 	  // Reverse left motors if you are using NeveRests
 
 	  rF.setDirection(DcMotor.Direction.REVERSE);
-	  rb.setDirection(DcMotor.Direction.REVERSE);
+	  rB.setDirection(DcMotor.Direction.REVERSE);
 
 		// Set motors to brake when not in use
 		lF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		rF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		lB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-		rb.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+		rB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		arm1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 		
 		
@@ -75,7 +75,7 @@ public class MecanumDriveRed extends LinearOpMode {
 		 lF.setPower(frontLeftPower * 0.25);
 		 lB.setPower(backLeftPower * 0.25);
 		 rF.setPower(frontRightPower * 0.25);
-		 rb.setPower(backRightPower * 0.25);
+		 rB.setPower(backRightPower * 0.25);
 		 telemetry.addLine("Speed one quarter");
 		 telemetry.update();
 		}
@@ -83,14 +83,14 @@ public class MecanumDriveRed extends LinearOpMode {
 			lF.setPower(frontLeftPower * 0.75);
 			lB.setPower(backLeftPower * 0.75);
 			rF.setPower(frontRightPower * 0.75);
-			rb.setPower(backRightPower * 0.75);
+			rB.setPower(backRightPower * 0.75);
 			telemetry.addLine("Speed 3/4");
 		 telemetry.update();
 		}else{
 		 lF.setPower(frontLeftPower);
 		 lB.setPower(backLeftPower);
 		 rF.setPower(frontRightPower);
-		 rb.setPower(backRightPower);
+		 rB.setPower(backRightPower);
 		 telemetry.addLine("Speed full");
 		 telemetry.update();
 		}

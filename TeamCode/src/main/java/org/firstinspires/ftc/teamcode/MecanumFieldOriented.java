@@ -90,16 +90,18 @@ public class MecanumFieldOriented extends LinearOpMode {
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
-        // Initialize the hardware variables. Note that the strings used here as parameters
-        // to 'get' must correspond to the names assigned during the robot configuration
-        // step (using the FTC Robot Controller app on the phone).
-        // Most robots need the motor on one side to be reversed to drive forward
-        // Reverse the motor that runs backwards when connected directly to the battery
+        // Set motor directions
         lF.setDirection(DcMotor.Direction.FORWARD);
         rF.setDirection(DcMotor.Direction.REVERSE);
         lB.setDirection(DcMotor.Direction.FORWARD);
         rB.setDirection(DcMotor.Direction.REVERSE);
 
+        // Set zero power behavior
+        lF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        lB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        rB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
+        arm1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
 
 
@@ -137,19 +139,32 @@ public class MecanumFieldOriented extends LinearOpMode {
             backRightPower = x_rotated + y_rotated - t;
 
             //Set carousel motor power
-            if(gamepad1.a){
+            if (gamepad1.a) {
                 duckiesPower = 1;
-            } else{
+            } else {
                 duckiesPower = 0;
             }
 
             // Send calculated power to motors
-            lF.setPower(frontLeftPower);
-            rF.setPower(frontRightPower);
-            lB.setPower(backLeftPower);
-            rB.setPower(backRightPower);
-            duckies.setPower(duckiesPower);
-
+            if (gamepad1.right_bumper) {
+                lF.setPower(frontLeftPower * 0.25);
+                rF.setPower(frontRightPower * 0.25);
+                lB.setPower(backLeftPower * 0.25);
+                rB.setPower(backRightPower * 0.25);
+                duckies.setPower(duckiesPower * 0.25);
+            } else if(gamepad1.left_bumper){
+                lF.setPower(frontLeftPower * 0.25);
+                rF.setPower(frontRightPower * 0.25);
+                lB.setPower(backLeftPower * 0.25);
+                rB.setPower(backRightPower * 0.25);
+                duckies.setPower(duckiesPower * 0.25);
+            } else{
+                lF.setPower(frontLeftPower);
+                rF.setPower(frontRightPower);
+                lB.setPower(backLeftPower);
+                rB.setPower(backRightPower);
+                duckies.setPower(duckiesPower);
+            }
             // Show the elapsed game time and wheel power.
             telemetry.addData("Motors", "carousel (%.2f)", duckiesPower);
             telemetry.update();
