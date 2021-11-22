@@ -48,7 +48,7 @@ public class MecanumDriveRed extends LinearOpMode {
 		 double y = gamepad1.left_stick_y;
 
 
-		  double frontLeftPower = y + x + rx;
+		 double frontLeftPower = y + x + rx;
 		 double backLeftPower = y - x + rx;
 		 double frontRightPower = y - x - rx;
 		 double backRightPower = y + x - rx;
@@ -129,7 +129,7 @@ public class MecanumDriveRed extends LinearOpMode {
 		//TODO
 
 		  int ticks;
-		  ticks = + (int)gamepad2.left_stick_y * 2;
+		  ticks +=  -(int)gamepad2.left_stick_y * 2;
 		  arm1.setPower(1);
 		arm1.setTargetPosition(ticks);
 		arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
