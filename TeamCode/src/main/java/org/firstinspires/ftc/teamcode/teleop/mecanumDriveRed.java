@@ -5,7 +5,7 @@ import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
-@TeleOp(name="Mecanum Drive Red", group="TeleOpMecanum")
+@TeleOp(name="Mecanum Drive Red", group="Competition")
 public class mecanumDriveRed extends LinearOpMode {
    @Override
    public void runOpMode()  {

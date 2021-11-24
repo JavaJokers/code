@@ -50,7 +50,7 @@ import com.qualcomm.hardware.bosch.BNO055IMU;
 import java.util.Locale;
 
 
-@TeleOp(name="MecanumFieldOriented", group="Game")
+@TeleOp(name="MecanumFieldOriented", group="Competition")
 //@Disabled
 public class mecanumFieldOriented extends LinearOpMode {
 
