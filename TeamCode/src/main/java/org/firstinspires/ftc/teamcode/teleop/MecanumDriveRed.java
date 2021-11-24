@@ -1,10 +1,9 @@
 package org.firstinspires.ftc.teamcode.teleop;
 
 import com.qualcomm.robotcore.eventloop.opmode.LinearOpMode;
-import com.qualcomm.robotcore.hardware.Servo;
 import com.qualcomm.robotcore.eventloop.opmode.TeleOp;
 import com.qualcomm.robotcore.hardware.DcMotor;
-import com.qualcomm.robotcore.hardware.DcMotorSimple;
+import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="Mecanum Drive Red", group="TeleOpMecanum")
 public class MecanumDriveRed extends LinearOpMode {
@@ -128,8 +127,8 @@ public class MecanumDriveRed extends LinearOpMode {
 
 		//TODO
 
-		  int ticks;
-		  ticks +=  -(int)gamepad2.left_stick_y * 2;
+		  int ticks = 0;
+		  ticks += -(int)gamepad2.left_stick_y * 2;
 		  arm1.setPower(1);
 		arm1.setTargetPosition(ticks);
 		arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
