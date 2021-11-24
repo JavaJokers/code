@@ -39,18 +39,20 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.util.ElapsedTime;
 import com.qualcomm.robotcore.util.Range;
 import com.qualcomm.robotcore.hardware.HardwareMap;
+
 import org.firstinspires.ftc.robotcore.external.navigation.Acceleration;
 import org.firstinspires.ftc.robotcore.external.navigation.AngleUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesOrder;
 import org.firstinspires.ftc.robotcore.external.navigation.AxesReference;
 import org.firstinspires.ftc.robotcore.external.navigation.DistanceUnit;
 import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
+
 import com.qualcomm.hardware.bosch.BNO055IMU;
 
 import java.util.Locale;
 
 
-@TeleOp(name="MecanumFieldOriented", group="Competition")
+@TeleOp(name = "MecanumFieldOriented", group = "Competition")
 //@Disabled
 public class mecanumFieldOriented extends LinearOpMode {
 
@@ -68,7 +70,7 @@ public class mecanumFieldOriented extends LinearOpMode {
     Servo grabber = hardwareMap.servo.get("grabber");
     BNO055IMU imu; // = hardwareMap.get(BNO055IMU.class, "imu");
 
-    public void initIMU(HardwareMap hwm){
+    public void initIMU(HardwareMap hwm) {
         imu = hwm.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters parameters1 = new BNO055IMU.Parameters();
         parameters1.angleUnit = BNO055IMU.AngleUnit.DEGREES;
@@ -100,8 +102,6 @@ public class mecanumFieldOriented extends LinearOpMode {
         lB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         rB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
-
-
 
 
         // Wait for the game to start (driver presses PLAY)
@@ -150,13 +150,13 @@ public class mecanumFieldOriented extends LinearOpMode {
                 lB.setPower(backLeftPower * 0.25);
                 rB.setPower(backRightPower * 0.25);
                 duckies.setPower(duckiesPower * 0.25);
-            } else if(gamepad1.left_bumper){
+            } else if (gamepad1.left_bumper) {
                 lF.setPower(frontLeftPower * 0.25);
                 rF.setPower(frontRightPower * 0.25);
                 lB.setPower(backLeftPower * 0.25);
                 rB.setPower(backRightPower * 0.25);
                 duckies.setPower(duckiesPower * 0.25);
-            } else{
+            } else {
                 lF.setPower(frontLeftPower);
                 rF.setPower(frontRightPower);
                 lB.setPower(backLeftPower);
@@ -165,15 +165,15 @@ public class mecanumFieldOriented extends LinearOpMode {
             }
 
             //set grabber positions
-            if(gamepad2.a){
+            if (gamepad2.a) {
                 grabber.setPosition(0.7);
                 telemetry.addLine("position 20");
                 telemetry.update();
-            } else if(gamepad2.b){
+            } else if (gamepad2.b) {
                 grabber.setPosition(0.45);
                 telemetry.addLine("position 30");
                 telemetry.update();
-            } else if(gamepad2.y){
+            } else if (gamepad2.y) {
                 grabber.setPosition(0.1);
                 telemetry.addLine("position 50");
                 telemetry.update();
@@ -199,15 +199,15 @@ public class mecanumFieldOriented extends LinearOpMode {
             //TODO
             //set arm positions
             int ticks = 0;
-            ticks += -(int)gamepad2.left_stick_y * 2;
+            ticks += -(int) gamepad2.left_stick_y * 2;
             arm1.setPower(1);
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
             //control carousel wheel
-            if(gamepad1.x || gamepad2.x){
+            if (gamepad1.x || gamepad2.x) {
                 duckies.setPower(-0.5);
-            }else{
+            } else {
                 duckies.setPower(0);
             }
 
@@ -216,9 +216,11 @@ public class mecanumFieldOriented extends LinearOpMode {
             telemetry.update();
         }
     }
+
     static String formatAngle(AngleUnit angleUnit, double angle) {
         return formatDegrees(AngleUnit.DEGREES.fromUnit(angleUnit, angle));
     }
+
     static String formatDegrees(double degrees) {
         return String.format(Locale.getDefault(), "%.1f", AngleUnit.DEGREES.normalize(degrees));
     }
