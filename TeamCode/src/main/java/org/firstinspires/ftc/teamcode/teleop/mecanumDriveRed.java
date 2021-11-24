@@ -6,7 +6,7 @@ import com.qualcomm.robotcore.hardware.DcMotor;
 import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name="Mecanum Drive Red", group="TeleOpMecanum")
-public class MecanumDriveRed extends LinearOpMode {
+public class mecanumDriveRed extends LinearOpMode {
    @Override
    public void runOpMode()  {
 	  // Declare our motors

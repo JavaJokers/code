@@ -52,7 +52,7 @@ import java.util.Locale;
 
 @TeleOp(name="MecanumFieldOriented", group="Game")
 //@Disabled
-public class MecanumFieldOriented extends LinearOpMode {
+public class mecanumFieldOriented extends LinearOpMode {
 
     public static Orientation angles;
     public static Acceleration gravity;
