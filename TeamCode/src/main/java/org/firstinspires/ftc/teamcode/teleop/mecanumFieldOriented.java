@@ -46,7 +46,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 import java.util.Locale;
 
 
-@TeleOp(name = "MecanumFieldOriented", group = "Competition")
+@TeleOp(name = "mecanumFieldOriented", group = "Competition")
 //@Disabled
 public class mecanumFieldOriented extends LinearOpMode {
 
@@ -62,7 +62,7 @@ public class mecanumFieldOriented extends LinearOpMode {
     DcMotor duckies = hardwareMap.dcMotor.get("duckies");
     Servo wrist1 = hardwareMap.servo.get("wrist");
     Servo grabber = hardwareMap.servo.get("grabber");
-    BNO055IMU imu; // = hardwareMap.get(BNO055IMU.class, "imu");
+    BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu");
 
     public void initIMU(HardwareMap hwm) {
         imu = hwm.get(BNO055IMU.class, "imu");
@@ -130,12 +130,6 @@ public class mecanumFieldOriented extends LinearOpMode {
             frontRightPower = x_rotated - y_rotated - t;
             backRightPower = x_rotated + y_rotated - t;
 
-            //Set carousel motor power
-            if (gamepad1.a) {
-                duckiesPower = 1;
-            } else {
-                duckiesPower = 0;
-            }
 
             // Send calculated power to motors
             if (gamepad1.right_bumper) {
@@ -143,19 +137,19 @@ public class mecanumFieldOriented extends LinearOpMode {
                 rF.setPower(frontRightPower * 0.25);
                 lB.setPower(backLeftPower * 0.25);
                 rB.setPower(backRightPower * 0.25);
-                duckies.setPower(duckiesPower * 0.25);
+
             } else if (gamepad1.left_bumper) {
                 lF.setPower(frontLeftPower * 0.25);
                 rF.setPower(frontRightPower * 0.25);
                 lB.setPower(backLeftPower * 0.25);
                 rB.setPower(backRightPower * 0.25);
-                duckies.setPower(duckiesPower * 0.25);
+
             } else {
                 lF.setPower(frontLeftPower);
                 rF.setPower(frontRightPower);
                 lB.setPower(backLeftPower);
                 rB.setPower(backRightPower);
-                duckies.setPower(duckiesPower);
+
             }
 
             //set grabber positions
@@ -206,7 +200,7 @@ public class mecanumFieldOriented extends LinearOpMode {
             }
 
             // Show the wheel power.
-            telemetry.addData("Motors", "carousel (%.2f)", duckiesPower);
+            telemetry.addData("Motors", "carousel");
             telemetry.update();
         }
     }
