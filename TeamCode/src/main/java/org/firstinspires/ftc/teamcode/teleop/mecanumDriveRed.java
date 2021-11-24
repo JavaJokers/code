@@ -96,15 +96,15 @@ public class mecanumDriveRed extends LinearOpMode {
 		
 		if(gamepad2.a){
 			grabber.setPosition(0.7);
-			telemetry.addLine("position 20");
+			telemetry.addLine("Open");
 			telemetry.update();
 		} else if(gamepad2.b){
 			grabber.setPosition(0.45);
-			telemetry.addLine("position 30");
+			telemetry.addLine("Ball");
 			telemetry.update();
 		} else if(gamepad2.y){
 			grabber.setPosition(0.1);
-			telemetry.addLine("position 50");
+			telemetry.addLine("Box");
 			telemetry.update();
 		}
 		
