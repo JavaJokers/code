@@ -195,6 +195,9 @@ public class mecanumFieldOriented extends LinearOpMode {
             ticks = ticks -(int) gamepad2.left_stick_y * 2;
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+            arm1.setPower(0.5);
+
+
 
             //control carousel wheel
             if (gamepad1.x || gamepad2.x) {
