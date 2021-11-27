@@ -53,10 +53,10 @@ public class mecanumFieldOriented extends LinearOpMode {
     public static Orientation angles;
     public static Acceleration gravity;
 
-    //BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu 1");
-/*
+    BNO055IMU imu;
+
     public void initIMU(HardwareMap hwm) {
-        imu = hwm.get(BNO055IMU.class, "imu 1");
+        imu = hwm.get(BNO055IMU.class, "imu");
         BNO055IMU.Parameters parameters1 = new BNO055IMU.Parameters();
         parameters1.angleUnit = BNO055IMU.AngleUnit.DEGREES;
         parameters1.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
@@ -68,7 +68,7 @@ public class mecanumFieldOriented extends LinearOpMode {
 
         angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
     }
-*/
+
     @Override
     public void runOpMode() {
 
@@ -81,10 +81,11 @@ public class mecanumFieldOriented extends LinearOpMode {
         DcMotor duckies = hardwareMap.dcMotor.get("duckies");
         Servo wrist1 = hardwareMap.servo.get("wrist");
         Servo grabber = hardwareMap.servo.get("grabber");
+        BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu");
 
 
 
-        //initIMU(hardwareMap);
+        initIMU(hardwareMap);
         telemetry.addData("Status", "Initialized");
         telemetry.update();
 
@@ -191,7 +192,6 @@ public class mecanumFieldOriented extends LinearOpMode {
             //set arm positions
             int ticks = 0;
             ticks += -(int) gamepad2.left_stick_y * 2;
-            arm1.setPower(1);
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
