@@ -18,6 +18,28 @@ import java.util.Locale;
 
 @TeleOp(name = "fieldOriented", group = "Competition")
 public class fieldOriented extends LinearOpMode {
+
+    public static Orientation angles;
+    public static Acceleration gravity;
+
+    BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu 1");
+
+
+    public void initIMU(HardwareMap hwm) {
+        imu = hwm.get(BNO055IMU.class, "imu 1");
+        BNO055IMU.Parameters parameters1 = new BNO055IMU.Parameters();
+        parameters1.angleUnit = BNO055IMU.AngleUnit.DEGREES;
+        parameters1.accelUnit = BNO055IMU.AccelUnit.METERS_PERSEC_PERSEC;
+        parameters1.calibrationDataFile = "BNO055IMUCalibration.json"; // see the calibration sample opmode
+        parameters1.loggingEnabled = true;
+        parameters1.loggingTag = "IMU";
+        parameters1.accelerationIntegrationAlgorithm = new JustLoggingAccelerationIntegrator();
+        imu.initialize(parameters1);
+
+        angles = imu.getAngularOrientation(AxesReference.INTRINSIC, AxesOrder.ZYX, AngleUnit.DEGREES);
+    }
+
+
     @Override
     public void runOpMode() {
         // Declare our motors
