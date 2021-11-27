@@ -198,7 +198,7 @@ public class mecanumFieldOriented extends LinearOpMode {
 
             //control carousel wheel
             if (gamepad1.x || gamepad2.x) {
-                duckies.setPower(-0.5);
+                duckies.setPower(-0.8);
             } else {
                 duckies.setPower(0);
             }
