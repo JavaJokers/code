@@ -111,7 +111,7 @@ public class mecanumDriveRed extends LinearOpMode {
             }
 
             //set wrist position
-            wrist1.setPosition(gamepad2.right_trigger);
+           // wrist1.setPosition(gamepad2.right_trigger);
 
             //TODO
             //set wrist position option 2
@@ -130,12 +130,12 @@ public class mecanumDriveRed extends LinearOpMode {
             //TODO
 
 
-            //int ticks = 0;
-            //ticks += -(int) gamepad2.left_stick_y * 2;
+            int ticks = 0;
+            ticks += (int) gamepad2.left_stick_y * 2;
             telemetry.addData("Arm Position", arm1.getCurrentPosition());
-            telemetry.update();
-            arm1.setPower(0.6);
-            arm1.setTargetPosition(100);
+
+            arm1.setPower(1);
+            arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
