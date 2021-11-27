@@ -35,6 +35,8 @@ public class mecanumDriveRed extends LinearOpMode {
         rB.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         arm1.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
 
+        //reset encoders
+        arm1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
 
         waitForStart();
 
@@ -127,7 +129,7 @@ public class mecanumDriveRed extends LinearOpMode {
 
             //TODO
 
-            arm1.setMode(DcMotor.RunMode.STOP_AND_RESET_ENCODER);
+
             //int ticks = 0;
             //ticks += -(int) gamepad2.left_stick_y * 2;
             telemetry.addData("Arm Position", arm1.getCurrentPosition());
