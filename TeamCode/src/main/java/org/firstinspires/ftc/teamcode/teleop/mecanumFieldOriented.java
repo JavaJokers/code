@@ -52,6 +52,7 @@ public class mecanumFieldOriented extends LinearOpMode {
 
     public static Orientation angles;
     public static Acceleration gravity;
+    int ticks = 0;
 
     BNO055IMU imu;
 
@@ -190,8 +191,8 @@ public class mecanumFieldOriented extends LinearOpMode {
 
             //TODO
             //set arm positions
-            int ticks = 0;
-            ticks += -(int) gamepad2.left_stick_y * 2;
+
+            ticks = ticks -(int) gamepad2.left_stick_y * 2;
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
@@ -204,6 +205,7 @@ public class mecanumFieldOriented extends LinearOpMode {
 
             // Show the wheel power.
             telemetry.addData("Motors", "carousel");
+            telemetry.addData("Arm Position", ticks);
             telemetry.update();
         }
     }
