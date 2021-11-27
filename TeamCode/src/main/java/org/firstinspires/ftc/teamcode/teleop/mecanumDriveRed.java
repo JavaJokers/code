@@ -26,6 +26,7 @@ public class mecanumDriveRed extends LinearOpMode {
 
         rF.setDirection(DcMotor.Direction.REVERSE);
         rB.setDirection(DcMotor.Direction.REVERSE);
+        arm1.setDirection(DcMotor.Direction.REVERSE);
 
         // Set motors to brake when not in use
         lF.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
@@ -129,7 +130,7 @@ public class mecanumDriveRed extends LinearOpMode {
             //int ticks = 0;
             //ticks += -(int) gamepad2.left_stick_y * 2;
             arm1.setPower(1);
-            arm1.setTargetPosition(60);
+            arm1.setTargetPosition(100);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
