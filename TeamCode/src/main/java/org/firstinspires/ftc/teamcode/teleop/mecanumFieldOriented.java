@@ -53,16 +53,7 @@ public class mecanumFieldOriented extends LinearOpMode {
     public static Orientation angles;
     public static Acceleration gravity;
 
-    // Declare OpMode members.
-    DcMotor lF = hardwareMap.dcMotor.get("front_left");
-    DcMotor lB = hardwareMap.dcMotor.get("back_left");
-    DcMotor rF = hardwareMap.dcMotor.get("front_right");
-    DcMotor rB = hardwareMap.dcMotor.get("back_right");
-    DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
-    DcMotor duckies = hardwareMap.dcMotor.get("duckies");
-    Servo wrist1 = hardwareMap.servo.get("wrist");
-    Servo grabber = hardwareMap.servo.get("grabber");
-    BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu");
+    BNO055IMU imu = hardwareMap.get(BNO055IMU.class, "imu 1");
 
     public void initIMU(HardwareMap hwm) {
         imu = hwm.get(BNO055IMU.class, "imu");
@@ -80,6 +71,19 @@ public class mecanumFieldOriented extends LinearOpMode {
 
     @Override
     public void runOpMode() {
+
+        // Declare OpMode members.
+        DcMotor lF = hardwareMap.dcMotor.get("front_left");
+        DcMotor lB = hardwareMap.dcMotor.get("back_left");
+        DcMotor rF = hardwareMap.dcMotor.get("front_right");
+        DcMotor rB = hardwareMap.dcMotor.get("back_right");
+        DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
+        DcMotor duckies = hardwareMap.dcMotor.get("duckies");
+        Servo wrist1 = hardwareMap.servo.get("wrist");
+        Servo grabber = hardwareMap.servo.get("grabber");
+
+
+
         initIMU(hardwareMap);
         telemetry.addData("Status", "Initialized");
         telemetry.update();
@@ -109,7 +113,6 @@ public class mecanumFieldOriented extends LinearOpMode {
             double frontRightPower;
             double backLeftPower;
             double backRightPower;
-            double duckiesPower;
 
 
             //set gamepad values

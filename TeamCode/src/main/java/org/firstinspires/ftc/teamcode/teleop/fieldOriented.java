@@ -16,7 +16,7 @@ import org.firstinspires.ftc.robotcore.external.navigation.Orientation;
 
 import java.util.Locale;
 
-@TeleOp(name = "mecanumDriveRed", group = "Competition")
+@TeleOp(name = "fieldOriented", group = "Competition")
 public class fieldOriented extends LinearOpMode {
     @Override
     public void runOpMode() {
