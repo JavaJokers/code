@@ -89,3 +89,5 @@ lint/tmp/
 
 # IDE
 *.replit
+*.project
+*.settings/
