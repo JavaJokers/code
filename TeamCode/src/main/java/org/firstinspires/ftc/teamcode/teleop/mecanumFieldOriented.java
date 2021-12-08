@@ -192,7 +192,7 @@ public class mecanumFieldOriented extends LinearOpMode {
             //TODO
             //set arm positions
 
-            ticks = ticks -(int) gamepad2.left_stick_y * 2;
+            ticks = ticks - (-(int) gamepad2.left_stick_y * 2);
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
