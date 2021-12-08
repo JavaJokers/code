@@ -91,3 +91,6 @@ lint/tmp/
 *.replit
 *.project
 *.settings/
+
+#This is something
+.hprof
