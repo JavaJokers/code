@@ -7,6 +7,9 @@ import com.qualcomm.robotcore.hardware.Servo;
 
 @TeleOp(name = "mecanumDriveRed", group = "Competition")
 public class mecanumDriveRed extends LinearOpMode {
+
+    int ticks = 0;
+
     @Override
     public void runOpMode() {
         // Declare our motors
@@ -16,7 +19,7 @@ public class mecanumDriveRed extends LinearOpMode {
         DcMotor rF = hardwareMap.dcMotor.get("front_right");
         DcMotor rB = hardwareMap.dcMotor.get("back_right");
         DcMotor arm1 = hardwareMap.dcMotor.get("arm1");
-        DcMotor duckies = hardwareMap.dcMotor.get("duckies");
+        //DcMotor duckies = hardwareMap.dcMotor.get("duckies");
         Servo wrist1 = hardwareMap.servo.get("wrist");
         Servo grabber = hardwareMap.servo.get("grabber");
 
@@ -132,15 +135,15 @@ public class mecanumDriveRed extends LinearOpMode {
 
             telemetry.addData("Arm Position", arm1.getCurrentPosition());
 
-            arm1.setPower(1);
-            arm1.setTargetPosition((int)arm1.getCurrentPosition() + (int)gamepad2.left_stick_y);
+            ticks = ticks - (-(int) gamepad2.left_stick_y * 2);
+            arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
 
 
             if (gamepad1.x || gamepad2.x) {
-                duckies.setPower(-0.8);
+              //  duckies.setPower(-0.8);
             } else {
-                duckies.setPower(0);
+               // duckies.setPower(0);
             }
         }
     }
