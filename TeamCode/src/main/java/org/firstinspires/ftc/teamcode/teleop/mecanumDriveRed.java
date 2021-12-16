@@ -135,10 +135,11 @@ public class mecanumDriveRed extends LinearOpMode {
 
             telemetry.addData("Arm Position", arm1.getCurrentPosition());
 
+
             ticks = ticks - (-(int) gamepad2.left_stick_y * 2);
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
-
+            telemetry.addData("ticks", ticks);
 
             if (gamepad1.x || gamepad2.x) {
               //  duckies.setPower(-0.8);

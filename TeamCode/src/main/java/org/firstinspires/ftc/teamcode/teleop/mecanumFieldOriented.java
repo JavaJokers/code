@@ -177,7 +177,7 @@ public class mecanumFieldOriented extends LinearOpMode {
 
             //TODO
             //set wrist position option 2
-            /*
+
             if(gamepad2.dpad_up){
                 wrist1.setPosition(1);
             } else if(gamepad2.dpad_right){
@@ -187,7 +187,7 @@ public class mecanumFieldOriented extends LinearOpMode {
             } else if(gamepad2.dpad_left){
                 wrist1.setPosition(0.3);
             }
-            */
+
 
             //TODO
             //set arm positions
@@ -195,6 +195,8 @@ public class mecanumFieldOriented extends LinearOpMode {
             ticks = ticks - (-(int) gamepad2.left_stick_y * 2);
             arm1.setTargetPosition(ticks);
             arm1.setMode(DcMotor.RunMode.RUN_TO_POSITION);
+
+            //Manual Arm Movement
 
 
 
